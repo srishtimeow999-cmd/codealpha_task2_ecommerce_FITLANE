@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - FITLANE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <div class="logo">
+          <h1>🛍️ FITLANE</h1>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="cart.html" class="nav-link">Cart <span id="cartBadge" class="badge">0</span></a></li>
+          <li id="authMenu"></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container section-padding">
+    <h1>Checkout</h1>
+
+    <div class="checkout-container">
+      <!-- Checkout Form Section -->
+      <section class="checkout-form-section">
+        <form id="checkoutForm" class="checkout-form">
+          <!-- Shipping Address Section -->
+          <fieldset class="form-section">
+            <legend>Shipping Address</legend>
+            
+            <div class="form-group">
+              <label for="street">Street Address *</label>
+              <input 
+                type="text" 
+                id="street" 
+                name="street" 
+                required 
+                placeholder="Enter your street address"
+                class="input-field"
+              >
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">City *</label>
+                <input 
+                  type="text" 
+                  id="city" 
+                  name="city" 
+                  required 
+                  placeholder="Enter your city"
+                  class="input-field"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="state">State *</label>
+                <input 
+                  type="text" 
+                  id="state" 
+                  name="state" 
+                  required 
+                  placeholder="Enter your state"
+                  class="input-field"
+                >
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="zipCode">Postal Code *</label>
+                <input 
+                  type="text" 
+                  id="zipCode" 
+                  name="zipCode" 
+                  required 
+                  placeholder="Enter postal code"
+                  class="input-field"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="country">Country *</label>
+                <input 
+                  type="text" 
+                  id="country" 
+                  name="country" 
+                  required 
+                  placeholder="Enter your country"
+                  class="input-field"
+                >
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Payment Method Section -->
+          <fieldset class="form-section">
+            <legend>Payment Method</legend>
+            
+            <div class="radio-group">
+              <div class="radio-option">
+                <input 
+                  type="radio" 
+                  id="creditCard" 
+                  name="paymentMethod" 
+                  value="credit_card" 
+                  checked
+                >
+                <label for="creditCard">Credit Card</label>
+              </div>
+              <div class="radio-option">
+                <input 
+                  type="radio" 
+                  id="debitCard" 
+                  name="paymentMethod" 
+                  value="debit_card"
+                >
+                <label for="debitCard">Debit Card</label>
+              </div>
+              <div class="radio-option">
+                <input 
+                  type="radio" 
+                  id="upi" 
+                  name="paymentMethod" 
+                  value="upi"
+                >
+                <label for="upi">UPI</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Order Items -->
+          <fieldset class="form-section">
+            <legend>Order Items</legend>
+            <div id="orderItemsList" class="order-items">
+              <!-- Order items will be displayed here -->
+            </div>
+          </fieldset>
+
+          <!-- Place Order Button -->
+          <button type="submit" class="btn btn-primary btn-lg" id="placeOrderBtn">
+            Place Order
+          </button>
+          <a href="cart.html" class="btn btn-secondary">Back to Cart</a>
+        </form>
+      </section>
+
+      <!-- Order Summary Section -->
+      <aside class="order-summary">
+        <div class="summary-card">
+          <h2>Order Summary</h2>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summarySubtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (10%)</span>
+            <span id="summaryTax">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="summaryShipping">₹0</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total Amount</span>
+            <span id="summaryTotal">₹0</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About FITLANE</h3>
+          <p>Your one-stop destination for premium sportswear.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: support@fitlane.com</p>
+          <p>Phone: +91 1234567890</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 FITLANE. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - FITLANE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-container">
+        <div class="logo">
+          <h1>🛍️ FITLANE</h1>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="cart.html" class="nav-link">Cart <span id="cartBadge" class="badge">0</span></a></li>
+          <li id="authMenu"></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container section-padding">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div style="font-size: 64px; margin-bottom: 20px;">✅</div>
+      <h1>Payment Page / Order Confirmation</h1>
+      <p style="font-size: 18px; color: #718096; margin-bottom: 10px;">Thank you for your purchase</p>
+      <p id="orderIdDisplay" style="font-size: 16px; color: #666;"></p>
+    </div>
+
+    <div class="checkout-container">
+      <!-- Order Details -->
+      <section class="checkout-form-section">
+        <h2>Order Details</h2>
+        
+        <div id="orderDetails" class="summary-card">
+          <div class="loading">Loading order details...</div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+          <a href="index.html" class="btn btn-primary btn-lg">Continue Shopping</a>
+        </div>
+      </section>
+
+      <!-- Order Summary -->
+      <aside class="order-summary">
+        <div class="summary-card">
+          <h2>Order Summary</h2>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="confirmSubtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (10%)</span>
+            <span id="confirmTax">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="confirmShipping">₹0</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total Amount</span>
+            <span id="confirmTotal">₹0</span>
+          </div>
+          
+          <div style="margin-top: 20px; padding: 15px; background-color: #f0f7ff; border-radius: 8px;">
+            <p style="font-size: 12px; color: #666; margin: 0;">
+              📧 A confirmation email has been sent to your registered email address with all order details and tracking information.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About FITLANE</h3>
+          <p>Your one-stop destination for premium sportswear.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: support@fitlane.com</p>
+          <p>Phone: +91 1234567890</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 FITLANE. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    /**
+     * Load and display order details on confirmation page
+     */
+    const loadOrderConfirmation = async () => {
+      try {
+        // Get order ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('orderId');
+
+        if (!orderId) {
+          throw new Error('No order ID provided');
+        }
+
+        // Fetch order details
+        const response = await ordersAPI.getById(orderId);
+        const orderNumber = response.order?.orderNumber || localStorage.getItem('lastOrderNumber');
+        document.getElementById('orderIdDisplay').textContent = `Order ID: ${orderId}${orderNumber ? ' • Order Number: ' + orderNumber : ''}`;
+
+        if (response.success) {
+          displayOrderDetails(response.order);
+        }
+      } catch (error) {
+        console.error('Error loading order:', error);
+        document.getElementById('orderDetails').innerHTML = `
+          <p style="color: #e53e3e; padding: 20px; text-align: center;">
+            Error loading order details. Please check your email for confirmation.
+          </p>
+        `;
+      }
+    };
+
+    /**
+     * Display order details
+     */
+    const displayOrderDetails = (order) => {
+      const orderDetailsDiv = document.getElementById('orderDetails');
+      
+      // Format order items
+      const itemsHTML = order.items.map(item => `
+        <div style="padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <strong>${item.productName}</strong>
+            <strong>₹${item.total.toLocaleString('en-IN')}</strong>
+          </div>
+          <p style="margin: 0; font-size: 12px; color: #718096;">
+            Quantity: ${item.quantity} × ₹${item.price.toLocaleString('en-IN')}
+          </p>
+        </div>
+      `).join('');
+
+      orderDetailsDiv.innerHTML = `
+        <div style="margin-bottom: 20px;">
+          <h3 style="margin-bottom: 15px;">Order Items</h3>
+          ${itemsHTML}
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 15px; background-color: #f7fafc; border-radius: 8px;">
+          <h3 style="margin-bottom: 15px;">Shipping Address</h3>
+          <p style="margin: 5px 0;">
+            ${order.shippingAddress.street}, ${order.shippingAddress.city}
+          </p>
+          <p style="margin: 5px 0;">
+            ${order.shippingAddress.state} ${order.shippingAddress.zipCode}
+          </p>
+          <p style="margin: 5px 0;">
+            ${order.shippingAddress.country}
+          </p>
+        </div>
+
+        <div style="padding: 15px; background-color: #f0fdf4; border-radius: 8px;">
+          <h3 style="margin-bottom: 10px;">Order Status</h3>
+          <p style="margin: 5px 0;">
+            <strong>Status:</strong> <span style="text-transform: capitalize; color: #666;">
+              ${order.status}
+            </span>
+          </p>
+          <p style="margin: 5px 0;">
+            <strong>Payment Status:</strong> <span style="text-transform: capitalize; color: #666;">
+              ${order.paymentStatus}
+            </span>
+          </p>
+          <p style="margin: 5px 0;">
+            <strong>Order Date:</strong> ${new Date(order.createdAt).toLocaleDateString('en-IN')}
+          </p>
+        </div>
+      `;
+
+      // Update summary
+      document.getElementById('confirmSubtotal').textContent = `₹${order.subtotal.toLocaleString('en-IN')}`;
+      document.getElementById('confirmTax').textContent = `₹${order.tax.toLocaleString('en-IN')}`;
+      document.getElementById('confirmShipping').textContent = `₹${order.shippingCost.toLocaleString('en-IN')}`;
+      document.getElementById('confirmTotal').textContent = `₹${order.totalPrice.toLocaleString('en-IN')}`;
+    };
+
+    // Load order confirmation when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      loadOrderConfirmation();
+    });
+  </script>
+</body>
+</html>

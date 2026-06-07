@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITLANE - Luxury Essentials for Modern Living</title>
+    <link rel="stylesheet" href="css/style-modern.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-wrapper">
+                <div class="nav-brand">
+                    <a href="index-modern.html" class="logo">
+                        <span class="logo-text">FITLANE</span>
+                        <span class="logo-tagline">Premium Essentials</span>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index-modern.html" class="nav-link active">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Shop</a></li>
+                    <li><a href="#new-arrivals" class="nav-link">New Arrivals</a></li>
+                    <li><a href="#" class="nav-link">About</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search products..." class="search-input" id="search-input">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <a href="cart.html" class="cart-icon">
+                        <span class="cart-icon-inner">🛒</span>
+                        <span class="badge" id="cart-badge">0</span>
+                    </a>
+                    <div class="user-menu" id="auth-menu">
+                        <!-- Auth menu will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Full Width Image -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-label">NEW COLLECTION 2026</span>
+                    <h1 class="hero-title">Discover Premium Quality</h1>
+                    <p class="hero-description">
+                        Curated collections for those who demand excellence.<br>
+                        Free shipping on orders over $150.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="products.html" class="btn btn-primary btn-large">
+                            <span>Explore Collection</span>
+                            <span class="arrow">→</span>
+                        </a>
+                        <button class="btn btn-outline btn-large video-btn" id="video-btn">
+                            <span>🎬 Watch Video</span>
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Happy Customers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Premium Products</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <div class="placeholder-text">✨ Featured Collection ✨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="trust-section">
+        <div class="trust-container">
+            <div class="trust-badge">
+                <div class="badge-icon">🚚</div>
+                <h3>Free Shipping</h3>
+                <p>Orders over $150</p>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">🔒</div>
+                <h3>Secure Payment</h3>
+                <p>100% protected</p>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">↩️</div>
+                <h3>30-Day Returns</h3>
+                <p>No questions asked</p>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">🌱</div>
+                <h3>Eco-Friendly</h3>
+                <p>Sustainable materials</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="new-arrivals section-padding" id="new-arrivals">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">FRESH FINDS</div>
+                <h2 class="section-title">New Arrivals</h2>
+                <p class="section-subtitle">Fresh finds for the modern lifestyle</p>
+            </div>
+            <div class="arrivals-grid" id="arrivals-grid">
+                <div class="loading-skeleton">Loading...</div>
+            </div>
+            <div class="section-footer">
+                <a href="products.html" class="btn btn-secondary">View All New Arrivals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Showcase Section -->
+    <section class="categories-showcase section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">SHOP BY CATEGORY</div>
+                <h2 class="section-title">Explore Our Collections</h2>
+                <p class="section-subtitle">Find what you're looking for</p>
+            </div>
+            <div class="categories-grid" id="categories-grid">
+                <div class="loading-skeleton">Loading...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Highlight -->
+    <section class="featured-highlight section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-label">BESTSELLERS</div>
+                <h2 class="section-title">Hot Picks of the Week</h2>
+                <p class="section-subtitle">Discover our customers' top favorites</p>
+            </div>
+            <div class="featured-products-grid" id="featured-products">
+                <div class="loading-skeleton">Loading...</div>
+            </div>
+            <div class="section-footer text-center">
+                <a href="products.html" class="btn btn-primary">Discover More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section-padding bg-dark">
+        <div class="container">
+            <div class="section-header text-center text-white">
+                <div class="section-label text-white">REVIEWS</div>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real reviews from real customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Exceptional quality and fast shipping. The attention to detail is impressive!"</p>
+                    <p class="testimonial-author">— Sarah M.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Outstanding customer service. They made sure I got exactly what I needed."</p>
+                    <p class="testimonial-author">— James L.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The new collection is stunning! Quality and design exceeded my expectations."</p>
+                    <p class="testimonial-author">— Emma R.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Best shopping experience I've had. Will definitely order again!"</p>
+                    <p class="testimonial-author">— Michael T.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter section-padding">
+        <div class="newsletter-container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Join Our Community</h2>
+                <p class="newsletter-subtitle">Get exclusive offers and be the first to know about new arrivals</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <div class="newsletter-input-group">
+                        <input type="email" placeholder="Enter your email address" required class="newsletter-input">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                    <p class="newsletter-notice">✓ We respect your privacy. Unsubscribe at any time.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">FITLANE</div>
+                    <p>Premium essentials for modern living. We're committed to bringing you exceptional quality and outstanding customer service.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook">f</a>
+                        <a href="#" class="social-icon" title="Twitter">𝕏</a>
+                        <a href="#" class="social-icon" title="Instagram">📷</a>
+                        <a href="#" class="social-icon" title="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Bestsellers</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FITLANE. All rights reserved. | <span>Crafted for excellence</span></p>
+                <div class="payment-methods">
+                    <span>💳 💰 🏦 Secure Payment Methods</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/productDetail.js"></script>
+    <script src="js/home-modern.js"></script>
+</body>
+</html>

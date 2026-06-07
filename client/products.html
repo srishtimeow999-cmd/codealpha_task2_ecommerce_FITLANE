@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - FITLANE</title>
+  <link rel="stylesheet" href="css/style-modern.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-container">
+      <p>Free shipping on orders over $150 • 100% Secure Checkout • 30-day Easy Returns</p>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-name">FITLANE</span>
+        <span class="brand-tag">Sportswear for you</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link active">Shop</a></li>
+        <li><a href="products.html?gender=Men" class="nav-link">Men</a></li>
+        <li><a href="products.html?gender=Women" class="nav-link">Women</a></li>
+        <li><a href="#collections" class="nav-link">Collections</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div id="authMenu"></div>
+        <a href="cart.html" class="nav-action cart-action">Cart <span class="cart-count" id="cart-badge">0</span></a>
+        <a href="admin.html" class="nav-action admin-action" id="adminLink" style="display:none;">Admin</a>
+      </div>
+      <button class="mobile-toggle" id="mobile-toggle">☰</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container section-padding">
+      <div class="products-container" style="display:grid; grid-template-columns: 300px 1fr; gap: 2rem;">
+        <aside class="sidebar">
+          <div class="filter-section">
+            <h3>Filters</h3>
+            <div class="filter-group">
+              <label for="searchInput">Search</label>
+              <input type="text" id="searchInput" placeholder="Search products..." class="input-field">
+            </div>
+
+            <div class="filter-group">
+              <label for="genderFilter">Gender</label>
+              <select id="genderFilter" class="select-field">
+                <option value="All">All Genders</option>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="categoryFilter">Category</label>
+              <select id="categoryFilter" class="select-field">
+                <option value="All">All Categories</option>
+                <option value="Tops">Tops</option>
+                <option value="T-Shirts">T-Shirts</option>
+                <option value="Shorts">Shorts</option>
+                <option value="Pants">Pants</option>
+                <option value="Sports Bra">Sports Bra</option>
+                <option value="Socks">Socks</option>
+                <option value="Leggings">Leggings</option>
+                <option value="Sets">Sets</option>
+                <option value="Accessories">Accessories</option>
+              </select>
+            </div>
+
+            <button id="clearFilters" class="btn btn-secondary btn-full">Clear Filters</button>
+          </div>
+        </aside>
+
+        <section class="products-section">
+          <div class="sort-section" style="display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1.25rem;">
+            <select id="sortSelect" class="select-field">
+              <option value="default">Sort By</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Rating</option>
+            </select>
+            <div id="productCount" class="product-count">Showing products...</div>
+          </div>
+
+          <div class="products-grid" id="productsGrid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.5rem;">
+            <div class="loading">Loading products...</div>
+          </div>
+
+          <div class="pagination" id="paginationContainer" style="margin-top:2rem;"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer section-padding">
+    <div class="container footer-grid">
+      <div class="footer-column">
+        <h3>FITLANE</h3>
+        <p>Elite sportswear crafted for you. Premium fabrics, elevated performance, and effortless style.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="products.html?gender=Men">Men</a></li>
+          <li><a href="products.html?gender=Women">Women</a></li>
+          <li><a href="products.html?category=Sets">Sets</a></li>
+          <li><a href="products.html?category=Tops">Tops</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>support@fitlane.com</p>
+        <p>+1 234 567 890</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 FITLANE. Crafted for champions.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/productDetail.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

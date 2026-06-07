@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - FITLANE</title>
+  <link rel="stylesheet" href="css/style-modern.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-container">
+      <p>Admin dashboard for FITLANE. Add products, prices, stock, and featured items.</p>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-name">FITLANE</span>
+        <span class="brand-tag">Sportswear for you</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link">Shop</a></li>
+        <li><a href="admin.html" class="nav-link active">Admin</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div id="authMenu"></div>
+        <a href="cart.html" class="nav-action cart-action">Cart <span class="cart-count" id="cart-badge">0</span></a>
+      </div>
+      <button class="mobile-toggle" id="mobile-toggle">☰</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section-padding">
+      <div class="container admin-panel-grid">
+        <div class="admin-panel-card">
+          <div class="section-heading">
+            <span class="eyebrow">Admin</span>
+            <h2>Add a New Product</h2>
+            <p>Create a new FITLANE product with pricing, category, stock, and featured status.</p>
+          </div>
+
+          <form id="productForm" class="form-grid">
+            <input type="hidden" id="productId">
+            <div class="form-group">
+              <label for="productTitle">Product Title</label>
+              <input type="text" id="productTitle" class="input-field" placeholder="Enter product title" required>
+            </div>
+
+            <div class="form-group">
+              <label for="productDescription">Description</label>
+              <textarea id="productDescription" class="input-field" rows="4" placeholder="Enter product description" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="productPrice">Price (₹)</label>
+              <input type="number" id="productPrice" class="input-field" placeholder="Enter price" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+              <label for="productCategory">Product Type</label>
+              <select id="productCategory" class="select-field" required>
+                <option value="">Select product type</option>
+                <option value="Tops">Tops</option>
+                <option value="T-Shirts">T-Shirts</option>
+                <option value="Shorts">Shorts</option>
+                <option value="Pants">Pants</option>
+                <option value="Sports Bra">Sports Bra</option>
+                <option value="Socks">Socks</option>
+                <option value="Leggings">Leggings</option>
+                <option value="Sets">Sets</option>
+                <option value="Accessories">Accessories</option>
+                <optgroup label="Unisex Accessories" style="font-weight: bold;">
+                  <option value="Sports Shoes">Sports Shoes</option>
+                  <option value="Sports Watch">Sports Watch</option>
+                  <option value="Gym Bags">Gym Bags</option>
+                  <option value="Water Bottle">Water Bottle</option>
+                  <option value="Socks and Bands">Socks and Bands</option>
+                  <option value="Yoga Mat">Yoga Mat</option>
+                  <option value="Braces">Braces</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="productGender">Gender</label>
+              <select id="productGender" class="select-field" required>
+                <option value="">Select gender</option>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+                <option value="Unisex">Unisex</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="productImages">Product Images</label>
+              <textarea id="productImages" class="input-field" rows="4" placeholder="Enter one image URL per line"></textarea>
+              <small>Use multiple lines for multiple photos. The first URL will be used as the product thumbnail.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="productStock">Stock Quantity</label>
+              <input type="number" id="productStock" class="input-field" placeholder="Enter stock" min="0" required>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label for="productFeatured">Featured Product</label>
+              <input type="checkbox" id="productFeatured">
+            </div>
+
+            <div class="form-actions" style="grid-column: 1 / -1; display: flex; gap: 1rem; flex-wrap: wrap;">
+              <button type="button" id="submitProductButton" class="btn btn-primary btn-full" onclick="handleProductSubmit(event)">Add Product</button>
+              <button type="button" id="cancelEditButton" class="btn btn-secondary btn-full hidden">Cancel Edit</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="admin-panel-card">
+          <div class="section-heading">
+            <span class="eyebrow">Catalog</span>
+            <h2>Current Products</h2>
+            <p>View existing items and manage inventory. Use the Delete button on any product card to remove unwanted items.</p>
+          </div>
+
+          <div id="adminProductList" class="admin-product-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer section-padding">
+    <div class="container footer-grid">
+      <div class="footer-column">
+        <h3>FITLANE</h3>
+        <p>Admin dashboard for managing product inventory.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const validHosts = ['localhost:5000', '127.0.0.1:5000'];
+    if (window.location.protocol === 'file:' || !window.location.host || !validHosts.includes(window.location.host)) {
+      window.location.href = 'http://localhost:5000/admin.html';
+    }
+  </script>
+  <script src="js/api.js?v=3"></script>
+  <script src="js/auth.js?v=3"></script>
+  <script src="js/admin.js?v=3"></script>
+</body>
+</html>

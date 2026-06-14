@@ -2,9 +2,7 @@
 // Centralized API communication helper
 // Contains all functions to communicate with the backend
 
-const BACKEND_ORIGIN = 'http://localhost:5000';
-const originHost = window.location.host ? `${window.location.protocol}//${window.location.host}` : BACKEND_ORIGIN;
-const API_BASE_URL = `${BACKEND_ORIGIN}/api`;
+const API_BASE_URL = '/api';
 
 /**
  * Get stored JWT token from localStorage

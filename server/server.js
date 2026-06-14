@@ -64,10 +64,17 @@ const startServer = async () => {
     // Serve frontend static files from the client directory
     app.use(express.static(path.join(baseDir, 'client')));
 
-    // Fallback to index.html for frontend routes (MUST be last)
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(baseDir, 'client', 'index.html'));
+    // Only serve index.html for non-API routes
+app.get('*', (req, res) => {
+  if (req.originalUrl.startsWith('/api')) {
+    return res.status(404).json({
+      success: false,
+      message: 'API route not found'
     });
+  }
+
+  res.sendFile(path.join(baseDir, 'client', 'index.html'));
+});
 
     // ============= ERROR HANDLING MIDDLEWARE =============
     // Global error handler (catches all errors from routes)

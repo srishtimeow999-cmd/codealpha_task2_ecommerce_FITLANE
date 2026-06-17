@@ -1,4 +1,4 @@
-# ShopHub - E-Commerce Store
+# ShopHub - E-Commerce Store (web link: https://codealpha-task2-ecommerce-fitlane-2.onrender.com )
 
 A complete, beginner-friendly e-commerce platform built with HTML, CSS, JavaScript, Node.js, Express, and MongoDB.
 
